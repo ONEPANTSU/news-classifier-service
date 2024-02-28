@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+
+service NewsClassifier {
+  rpc ClassifyNews (NewsClassificationRequest) returns (NewsClassificationReply) {}
+}
+
+message NewsClassificationRequest {
+  string text = 1;
+}
+
+message NewsClassificationReply {
+  repeated string categories = 1;
+}
