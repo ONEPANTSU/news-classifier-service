@@ -9,8 +9,8 @@ from src.models.utils import CATEGORIES
 
 
 class BaseModel:
-    def __init__(self, path):
-        self.model = keras.models.load_model(path)
+    def __init__(self, path, *args, **kwargs):
+        self.model = keras.models.load_model(path, *args, **kwargs)
 
     def predict(self, text, threshold=0.3):
         standardized_text = self.__standardize(text)
