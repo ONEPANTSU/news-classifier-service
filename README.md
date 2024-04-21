@@ -43,11 +43,16 @@ This API uses the **Ensemble** by default.
 
 
 ## ▶️ Run:
-The service will run on port 50051
+If you want different model, you have to replace path of the model to copy in the Dockerfile:
+```Dockerfile
+COPY ./models/ensemble.keras ./models
+```
+Then start the service via docker-compose (it will run on the port 50051):
 ```
 docker-compose build
 docker-compose up
 ```
+
 ## 😗 Creating a client:
 
-Use file `client_example.py` as an example of gRPC client. Also you need to have files from dir `src/rpc/` 
+Use file `client_example.py` as an example of gRPC client. Also, you need to have files from dir `src/rpc/` 
