@@ -2,18 +2,18 @@ import logging
 
 import grpc
 
-from src.model import Model
+from src.models.ensemble_model import EnsembleModel
 from src.rpc import *
 
 
 class Classifier(classifier_pb2_grpc.NewsClassifierServicer):
-    model = Model("models/mlp.keras")
+    model = EnsembleModel()
 
     def ClassifyNews(
         self,
         request: classifier_pb2.NewsClassificationRequest,
         context: grpc.aio.ServicerContext,
-    ):
+    ) -> classifier_pb2.NewsClassificationReply:
         prediction = self.model.predict(request.text)
         return classifier_pb2.NewsClassificationReply(categories=prediction)
 

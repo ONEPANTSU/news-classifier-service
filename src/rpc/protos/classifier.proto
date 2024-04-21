@@ -12,3 +12,4 @@ message NewsClassificationRequest {
 message NewsClassificationReply {
   repeated string categories = 1;
 }
+
